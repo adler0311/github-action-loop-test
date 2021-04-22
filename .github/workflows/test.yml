@@ -1,0 +1,16 @@
+  on:
+    push:
+      branches:
+        - master
+  jobs:
+    builds:
+      runs-on: ubuntu-latest
+      steps:
+        - name: loop
+          run: |
+            discriminators="assign-files cancel-assigned rework force-complete reject remove-user-assignments apply-prediction-result"
+            for namespace in "argo-workflow-dev argo-workflow-in-house-dev":
+              for discriminator in $discriminators:
+                do
+                  echo $discriminator $namespace
+                done
